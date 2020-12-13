@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personaje</title>
+</head>
+
+<body>
+  <div *ngIf="( infoPersonaje | async )" class="jumbotron-full">
+    <!-- Jumbotron Header -->
+    <div class="jumbotron text-white bg-dark my-2">
+      <div class="row">
+        <div class="col-sm-4">
+          <img class="img-fluid rounded float-left img-thumbnail" src="{{ (infoPersonaje | async)?.image }}"
+            style="max-width:100%;width:auto;height:auto;">
+        </div>
+        <div class="col-sm-8">
+          <div class="d-flex w-100">
+            <h1 class="mb-1">Información del personaje:</h1>
+          </div>
+          <div class="d-flex w-100">
+            <h1 class="mb-1">Nombre: {{(infoPersonaje | async)?.name}}</h1>
+          </div>
+          <div class="d-flex w-100">
+            <h5 class="mb-1">Origen: {{ (infoPersonaje | async)?.origin.name }}</h5>
+          </div>
+          <div class="d-flex w-100">
+            <h5 class="mb-1">Especie: {{ (infoPersonaje | async)?.species }}</h5>
+          </div>
+          <div class="d-flex w-100">
+            <h5 class="mb-1">Genero: {{ (infoPersonaje | async)?.gender }}</h5>
+          </div>
+          <div class="d-flex w-100">
+            <h5 class="mb-1">Estatus: {{ (infoPersonaje | async)?.status }}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page Features -->
+    <div class="row row-cols-1 row-cols-md-2">
+      <div *ngFor="let episode of (infoPersonaje | async)?.episodeData; let i = index" class="list-group">
+        <a class="list-group-item list-group-item-action flex-column align-items-start text-white bg-dark">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{episode?.name}}</h5>
+          </div>
+        </a>
+      </div>
+    </div>
+    <!-- /.row -->
+  </div>
+  <div class="footer-copyright text-center text-white bg-dark">© 2020 Copyright:
+    <a> GMayaS C:\>Desarrollo en Sistemas.</a>
+  </div>
+</body>
+
+</html>

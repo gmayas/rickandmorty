@@ -9,13 +9,15 @@ import { AboutComponent } from './components/about/about.component';
 import { PersonajesComponent } from './components/personajes/personajes.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PersonajeComponent } from './components/personaje/personaje.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     AboutComponent,
-    PersonajesComponent
+    PersonajesComponent,
+    PersonajeComponent
   ],
   imports: [
     BrowserModule,

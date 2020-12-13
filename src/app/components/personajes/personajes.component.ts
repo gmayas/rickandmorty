@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiserviceService } from '../../services/apiservice.service'
 import { ToastrService } from 'ngx-toastr';
 import * as _ from "lodash";
@@ -12,7 +13,7 @@ export class PersonajesComponent implements OnInit {
 
   public PersonajesData: any = [];
 
-  constructor(public apiserviceService: ApiserviceService, private toastr: ToastrService) { }
+  constructor(public apiService: ApiserviceService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getPersonajes();
@@ -20,10 +21,37 @@ export class PersonajesComponent implements OnInit {
 
   async getPersonajes() {
     try {
-      let response = await this.apiserviceService.getPersonajes();
+      let response = await this.apiService.getPersonajes();
       let dataReturn = await response.json()
       this.PersonajesData = dataReturn.results;
-      console.log('PersonajesData:', this.PersonajesData)
+      this.toastr.success('Hola, excelente.', 'Aviso de Rick and Morty', {
+        timeOut: 10000,
+        positionClass: 'toast-bottom-right'
+      });
+    } catch (e) {
+      this.toastr.error('Hola, creo que algo salio mal. ', 'Aviso de Rick and Morty', {
+        timeOut: 10000,
+        positionClass: 'toast-bottom-right'
+      })
+      console.log('Error respose: ', e)
+    }
+  }
+
+ async getInfo(personaje: any) {
+    try {
+      let eipsodeListUrls = personaje.episode;
+      let eipsodeLists = [];
+      let episodeDataList = [];
+      eipsodeListUrls.map(function callback(currentValue: any) {
+        let data = currentValue.substr(32).replace('episode/', '');
+        eipsodeLists.push(data)
+      });
+      let response = await this.apiService.getInfo(eipsodeLists.join());
+      let dataReturn = await response.json()
+      episodeDataList = dataReturn;
+      personaje =  Object.assign(personaje, { episodeData: episodeDataList });
+      this.apiService.setInfoPersonaje(personaje);
+      this.router.navigate(['personaje']);
       this.toastr.success('Hola, excelente.', 'Aviso de Rick and Morty', {
         timeOut: 10000,
         positionClass: 'toast-bottom-right'
