@@ -10,15 +10,18 @@ import * as _ from "lodash";
   styleUrls: ['./personajes.component.css']
 })
 export class PersonajesComponent implements OnInit {
-
-  public PersonajesData: any = [];
+  
+  //Array para mostrar la lista de los personajes (*ngFor)
+  public PersonajesData: any = []; 
 
   constructor(public apiService: ApiserviceService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    // Llamado inicial de la funcion
     this.getPersonajes();
   }
-
+ 
+  // Función asincrona para obtener el listado de los personajes provenientes del apiServices
   async getPersonajes() {
     try {
       let response = await this.apiService.getPersonajes();
@@ -37,12 +40,13 @@ export class PersonajesComponent implements OnInit {
     }
   }
 
+ // Función asincrona para obtener la informacion completa del personaje proveniente del apiServices
  async getInfo(personaje: any) {
     try {
       let eipsodeListUrls = personaje.episode;
       let eipsodeLists = [];
       let episodeDataList = [];
-      eipsodeListUrls.map(function callback(currentValue: any) {
+      eipsodeListUrls.map((currentValue: any) => {
         let data = currentValue.substr(32).replace('episode/', '');
         eipsodeLists.push(data)
       });
