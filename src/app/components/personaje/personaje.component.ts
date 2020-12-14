@@ -13,7 +13,6 @@ export class PersonajeComponent implements OnInit {
 
   ngOnInit(): void {
    this.infoPersonaje = this.apiService.getInfoPersonaje();
-   console.log( 'infoPersonaje',  this.infoPersonaje )
   }
 
 }

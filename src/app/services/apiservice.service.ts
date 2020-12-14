@@ -17,7 +17,6 @@ export class ApiserviceService {
   };
 
   getInfo(eipsodeLists: any) {
-    console.log(`https://rickandmortyapi.com/api/episode/${eipsodeLists}`)
     return fetch(`https://rickandmortyapi.com/api/episode/${eipsodeLists}`)
   };
 

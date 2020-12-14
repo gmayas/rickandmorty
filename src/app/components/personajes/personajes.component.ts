@@ -47,8 +47,9 @@ export class PersonajesComponent implements OnInit {
         eipsodeLists.push(data)
       });
       let response = await this.apiService.getInfo(eipsodeLists.join());
-      let dataReturn = await response.json()
-      episodeDataList = dataReturn;
+      let dataReturn = await response.json();
+      // Valida si dataReturn es un array
+      if (_.isArray(dataReturn)) {  episodeDataList = dataReturn } else {  episodeDataList.push(dataReturn) };
       personaje =  Object.assign(personaje, { episodeData: episodeDataList });
       this.apiService.setInfoPersonaje(personaje);
       this.router.navigate(['personaje']);

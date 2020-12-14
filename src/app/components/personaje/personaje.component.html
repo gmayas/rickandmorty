@@ -8,8 +8,7 @@
 </head>
 
 <body>
-  <div *ngIf="( infoPersonaje | async )" class="jumbotron-full">
-    <!-- Jumbotron Header -->
+  <div *ngIf="( infoPersonaje | async )" class="jumbotron-full my-2">
     <div class="jumbotron text-white bg-dark my-2">
       <div class="row">
         <div class="col-sm-4">
@@ -35,20 +34,31 @@
           <div class="d-flex w-100">
             <h5 class="mb-1">Estatus: {{ (infoPersonaje | async)?.status }}</h5>
           </div>
+          <div class="d-flex w-100  my-4">
+            <a type="button" class="btn btn-danger" href=""><h5>Retornar a personajes</h5></a>
+          </div>
         </div>
       </div>
     </div>
-    <!-- Page Features -->
+    <div class="text-white bg-dark my-2">
+      <h1 class="text-center mb-1">Episodios de: {{(infoPersonaje | async)?.name}} </h1>
+    </div>
     <div class="row row-cols-1 row-cols-md-2">
       <div *ngFor="let episode of (infoPersonaje | async)?.episodeData; let i = index" class="list-group">
         <a class="list-group-item list-group-item-action flex-column align-items-start text-white bg-dark">
           <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">{{episode?.name}}</h5>
+            <h5 class="mb-1">Episodio: {{ episode?.id }}</h5>
+            <small>{{ episode?.episode }}</small>
+          </div>
+          <div class="d-flex w-100">
+            <h5 class="mb-1">Titulo: {{ episode?.name }}</h5>
+          </div>
+          <div class="d-flex w-100">
+            <h5 class="mb-1">Fecha al aire: {{ episode?.air_date }}</h5>
           </div>
         </a>
       </div>
     </div>
-    <!-- /.row -->
   </div>
   <div class="footer-copyright text-center text-white bg-dark">© 2020 Copyright:
     <a> GMayaS C:\>Desarrollo en Sistemas.</a>
