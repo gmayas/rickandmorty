@@ -6,7 +6,7 @@ Ejecute `npm run dev` para que el servidor de desarrollo vaya a `http: // localh
 
 Ejecute `npm run deploy` para construir el proyecto, este se construira en el directorio `dist /` y se publicafa en Firebase hostiing.
 
-Esta Web API fue creado con componentes bootstrap y estilos de bootswatch Litera.
+Esta Web API fue creada con componentes bootstrap y estilos de bootswatch Litera.
 
 https://getbootstrap.com/docs/5.0/getting-started/introduction/
 https://bootswatch.com/litera/
