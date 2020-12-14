@@ -4,9 +4,9 @@ Este proyecto se generó con [Angular CLI] (https://github.com/angular/angular-c
 
 Ejecute `npm run dev` para que el servidor de desarrollo vaya a `http: // localhost: 4200 /`. 
 
-Ejecute `npm run deploy` para construir el proyecto, este se construira en el directorio `dist /` y se publicafa en Firebase hostiing.
+Ejecute `npm run deploy` para construir el proyecto, este se construira en el directorio `dist /` y se publicará en Firebase Hosting.
 
-Esta Web API fue creada con componentes bootstrap y estilos de bootswatch Litera.
+Esta Web API fue creada con componentes Bootstrap y estilos de Bootswatch Litera.
 
 Bootstrap:
 https://getbootstrap.com/docs/5.0/getting-started/introduction/
@@ -14,7 +14,7 @@ https://getbootstrap.com/docs/5.0/getting-started/introduction/
 Bootswatch Litera:
 https://bootswatch.com/litera/
 
-Se utilizo la función fetch para la invocacion de los gets con las urls que apuntan a la ApiRest.
+Se utilizo la función fetch para la invocación de los gets con las urls que apuntan a la ApiRest.
 
 Personajes:
 https://rickandmortyapi.com/api/character
